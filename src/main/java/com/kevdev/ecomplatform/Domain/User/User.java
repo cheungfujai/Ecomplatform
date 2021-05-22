@@ -2,6 +2,7 @@ package com.kevdev.ecomplatform.Domain.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
 
@@ -11,28 +12,29 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
     @Nullable
     @Column(name="username")
-    String UserName;
+    private String name;
     @Nullable
     @Column(name="instgramName")
-    String instgramName;
+    private String instgramName;
     @Nullable
     @Column(name="address")
-    String Address;
+    private String address;
 
     @Column(name="contactNumber")
-    String contactNumber;
+    private String contactNumber;
     @Column(name="admin")
-    Boolean isAdmin;
+    private Boolean isAdmin;
     @Column(name="spent")
-    double totalSpent;
+    private double totalSpent;
 
-    public User() {
 
-    }
 }
