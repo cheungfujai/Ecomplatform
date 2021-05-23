@@ -24,10 +24,6 @@ public class Maintype {
     private String mainTypeName;
 
     @Nullable
-    @OneToOne(mappedBy="mainType")
-    private Product product;
-
-    @Nullable
     @Column(name = "photo_url")
     private String base64StringPhoto;
 

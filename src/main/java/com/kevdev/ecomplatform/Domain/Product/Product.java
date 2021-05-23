@@ -9,6 +9,8 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,7 +27,7 @@ public class Product {
     @Column(name="product_name")
     private String productName;
 
-    @Column(name="product_rice")
+    @Column(name="product_price")
     private double productPrice;
 
     @Column(name="create_at")
@@ -40,14 +42,8 @@ public class Product {
     private double productWeight;
 
     @Nullable
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_main_type")
-    private Maintype mainType;
-
-    @Nullable
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_sub_type")
-    private Subtype subType;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Maintype> mainTypeList = new ArrayList<>();
 
     @Column(name = "inventory")
     private boolean hasInventory;
@@ -56,16 +52,12 @@ public class Product {
             String productName,
             double productPrice,
             double productWeight,
-            @Nullable Maintype mainType,
-            @Nullable Subtype subType,
             boolean hasInventory) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.createAt = LocalDateTime.now();
         this.updateAt = LocalDateTime.now();
         this.productWeight = productWeight;
-        this.mainType = mainType;
-        this.subType = subType;
         this.hasInventory = hasInventory;
     }
 }
