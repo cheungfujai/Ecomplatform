@@ -17,14 +17,14 @@ import javax.persistence.*;
 @Table(name="user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
     @Nullable
     @Column(name="username")
     private String name;
     @Nullable
-    @Column(name="instgramName")
-    private String instgramName;
+    @Column(name="instagramName")
+    private String instagramName;
     @Nullable
     @Column(name="address")
     private String address;
